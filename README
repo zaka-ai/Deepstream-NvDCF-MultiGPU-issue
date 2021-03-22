@@ -1,3 +1,12 @@
+# NvDCF issue
+**•	Hardware Platform (Jetson / GPU)** T4 GPU
+**•	DeepStream Version** Deepstream-5.0
+**•	NVIDIA GPU Driver Version (valid for GPU only)** 460.32.03
+
+I have multiple GPUs on my instance. I am trying to run the whole pipeline on the GPU-id 1. Everything is working fine, but when I am using the NvDCF tracker I am getting a redundant process on GPU 0 (default GPU according to SDK) that is consuming 0% utilization of GPU 0. However, it is reducing the processing time of the whole video by a significant amount (for 15 videos - each is 10 min - and 3 models, running the whole pipeline on GPU 0 requires 6 min of processing while running it on GPU 1 with this redundant process consuming 0% utilization on GPU 0 the required processing time is around 10 min).
+
+Using KLT or no tracker, this redundant process is absent. This is affecting our scalability a lot. Can you plz follow up with the issue?
+
 *****************************************************************************
 * Copyright (c) 2018 NVIDIA Corporation.  All rights reserved.
 *
